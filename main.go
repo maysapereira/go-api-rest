@@ -12,7 +12,8 @@ func Home(w http.ResponseWriter, r *http.Request) {
 
 func HandleRequest() {
 	http.HandleFunc("/", Home)
-	log.Fatal(http.ListenAndServe(":8000", nil))
+	log.Fatal(http.ListenAndServe(":8000", nil)) //log Fatal faz com que qualquer problema que aconteça ao subir o servidor seja avisado
+
 }
 
 func main() {
