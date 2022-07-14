@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 
+	"github.com/maysapereira/go-api-rest/database"
 	"github.com/maysapereira/go-api-rest/models"
 	"github.com/maysapereira/go-api-rest/routes"
 )
@@ -15,5 +16,6 @@ func main() {
 		{Id: 2, Nome: "Nome 2", Historia: "Historia 2"},
 	}
 
+	database.ConectaBancoDeDados()
 	routes.HandleRequest()
 }
