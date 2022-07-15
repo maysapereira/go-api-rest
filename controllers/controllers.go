@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
-	"strconv"
 
 	"github.com/gorilla/mux"
 	"github.com/maysapereira/go-api-rest/database"
@@ -24,12 +23,8 @@ func TodosPersonagens(w http.ResponseWriter, r *http.Request) {
 func RetornaUmPersonagem(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	id := vars["id"]
+	var p models.Personagen
 
-	for _, personagem := range models.Personagens {
-		if strconv.Itoa(personagem.Id) == id {
-			json.NewEncoder(w).Encode(personagem)
-		}
-	}
-
-	//
+	database.DB.First(&p, id)
+	json.NewEncoder(w).Encode(p)
 }
