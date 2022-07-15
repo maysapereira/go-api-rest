@@ -7,6 +7,7 @@ import (
 	"strconv"
 
 	"github.com/gorilla/mux"
+	"github.com/maysapereira/go-api-rest/database"
 	"github.com/maysapereira/go-api-rest/models"
 )
 
@@ -15,7 +16,9 @@ func Home(w http.ResponseWriter, r *http.Request) {
 }
 
 func TodosPersonagens(w http.ResponseWriter, r *http.Request) {
-	json.NewEncoder(w).Encode(models.Personagens)
+	var p []models.Personagen
+	database.DB.Find(&p)
+	json.NewEncoder(w).Encode(p)
 }
 
 func RetornaUmPersonagem(w http.ResponseWriter, r *http.Request) {
